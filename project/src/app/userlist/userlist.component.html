@@ -1,0 +1,72 @@
+<mat-card>
+  <mat-card-header>
+    <h1 class="ul">USER DATA LIST</h1>
+</mat-card-header>
+    <div class="container">
+  
+  </div>
+    <mat-card-content>
+        <div class="mat-elevation-z8">
+            <table mat-table matSort [dataSource]="userdata" class="mat-elevation-z8">
+
+                
+                <ng-container class="h" matColumnDef="firstname">
+                  <th mat-header-cell mat-sort-header *matHeaderCellDef> firstname </th>
+                  <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container class="h" matColumnDef="lastname">
+                  <th mat-header-cell mat-sort-header *matHeaderCellDef> lastname </th>
+                  <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+                </ng-container>
+              
+                <!-- Weight Column -->
+                <ng-container class="h" matColumnDef="email">
+                  <th mat-header-cell mat-sort-header *matHeaderCellDef> email </th>
+                  <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                </ng-container>
+              
+                <!-- Symbol Column -->
+                <ng-container class="h" matColumnDef="phone">
+                  <th mat-header-cell mat-sort-header *matHeaderCellDef> phone </th>
+                  <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+                </ng-container>
+                <ng-container class="h" matColumnDef="role">
+                  <th mat-header-cell mat-sort-header *matHeaderCellDef> role </th>
+                  <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+                </ng-container>
+                <ng-container class="h" matColumnDef="status">
+                    <th mat-header-cell mat-sort-header *matHeaderCellDef> status </th>
+                    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                  </ng-container>
+                  <ng-container class="h" matColumnDef="approval">
+                    <th mat-header-cell  *matHeaderCellDef> approval </th>
+                    <td mat-cell *matCellDef="let element">  
+                      <button (click)="approveuser(element._id)" [disabled]="element.status == 'active'" mat-raised-button color="primary">Approve</button>    
+                    </td>
+                  </ng-container>
+
+                  <ng-container class="h" matColumnDef="edit">
+                    <th mat-header-cell *matHeaderCellDef>edit  </th>
+                    <td mat-cell *matCellDef="let element">  
+                        <button (click)="edituser()"  mat-raised-button color="primary">edit</button>
+                    </td>
+                  </ng-container>
+
+                  <ng-container class="h" matColumnDef="delete">
+                    <th mat-header-cell *matHeaderCellDef>delete  </th>
+                    <td mat-cell *matCellDef="let element">  
+                        <button (click)="delete(element._id)"  mat-raised-button color="primary">delete</button>
+                    </td>
+                  </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+              
+              
+          </div>
+    </mat-card-content>
+  </mat-card>
+
+  
