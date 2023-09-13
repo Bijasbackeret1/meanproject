@@ -32,12 +32,16 @@ export class LoginComponent {
           if (this.logres.data.user.status == 'active') {
             sessionStorage.setItem('id', this.logres.data.user._id);
             sessionStorage.setItem('role', this.logres.data.user.role);
+            sessionStorage.setItem('password', this.logres.data.user.password);
   
             if (this.logres.data.user.role == "admin") {
               this.router.navigate(['userlist']);
             } else if (this.logres.data.user.password === this.logres.data.user.firstname + "#2021") {
               this.router.navigate(['passwordreset']);
-            } else {
+            } else if(this.logres.data.user.password ===this.logres.data.user.password){
+              this.router.navigate(['home']);
+            }
+            else {
               this.router.navigate(['login']);
               this.toaster.error('check detailes you are entered');
             }
